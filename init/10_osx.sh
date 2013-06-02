@@ -19,7 +19,7 @@ if [[ "$(type -P brew)" ]]; then
   brew update
 
   # Install Homebrew recipes.
-  recipes=(git tree sl lesspipe id3tool nmap git-extras htop-osx man2html)
+  recipes=(git tree sl lesspipe id3tool nmap htop-osx man2html macvim)
 
   list="$(to_install "${recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then
@@ -30,5 +30,16 @@ if [[ "$(type -P brew)" ]]; then
   if [[ ! "$(type -P gcc-4.2)" ]]; then
     e_header "Installing Homebrew dupe recipe: apple-gcc42"
     brew install https://raw.github.com/Homebrew/homebrew-dupes/master/apple-gcc42.rb
+  fi
+fi
+
+# Install vim janus
+if [[ "$(type -P vim)" ]]; then
+  if [[ -d $HOME/.vim && "$(cd $HOME/.vim; git status 2> /dev/null)" ]]; then  
+    e_header "Updating vim-janus"
+    cd $HOME/.vim; rake
+  else
+    e_header "Installing vim-janus"
+    curl -Lo- https://raw.github.com/carlhuda/janus/master/bootstrap.sh | bash
   fi
 fi
