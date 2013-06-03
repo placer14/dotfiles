@@ -1,16 +1,17 @@
 # Manages dev folder jumping and setup
-WORKDIR="/Users/mg/work/"
-DROPBOX_WORK_PATH="/Users/mg/Dropbox/Work/"
+export WORKDIR="$HOME/work/"
+export DROPBOX_WORK_PATH="$HOME/Dropbox/Work"
 function dev () {
-  if [[ $# -gt 1 ]]; then
+  if [[ ! $# -eq 1 ]]; then
     echo "Usage: dev WORKSPACE_NAME"
     echo ""
     return 1
-  fi
-  if [[ -L ${WORKDIR}${1} ]]; then
-    cd ${WORKDIR}${1}
-    if [[ -f ${WORKDIR}${1}/.bashrc ]]; then
-      . ${WORKDIR}${1}/.bashrc
+  else
+    if [[ -L ${WORKDIR}${1} ]]; then
+      cd ${WORKDIR}${1}
+      if [[ -f ${WORKDIR}${1}/.bashrc ]]; then
+        source ${WORKDIR}${1}/.bashrc
+      fi
     fi
   fi
 }
