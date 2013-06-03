@@ -33,7 +33,7 @@
 
 # Install Ruby.
 if [[ "$(type -P rvm)" ]]; then
-  versions=(1.9.3-p194 1.9.2-p290)
+  versions=(1.9.3-p392 1.9.3-p194 1.9.2-p290)
 
   list="$(to_install "${versions[*]}" "$(rvm list strings)")"
   if [[ "$list" ]]; then
