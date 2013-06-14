@@ -31,6 +31,13 @@
 #  fi
 #fi
 
+# Install RVM
+if [[ ! "$(type -P rvm)" ]]; then
+  e_header "Installing RVM"
+  curl -L https://get.rvm.io | bash
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
+
 # Install Ruby.
 if [[ "$(type -P rvm)" ]]; then
   versions=(1.9.3-p392 1.9.3-p194 1.9.2-p290)
