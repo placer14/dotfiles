@@ -18,8 +18,21 @@ if [[ "$(type -P brew)" ]]; then
   e_header "Updating Homebrew"
   brew update
 
+  cd `brew --prefix`
+  # Set homebrew to use the latest ack that is v1
+  `brew versions ack 2>/dev/null | grep ^1 | head -n 1 | cut -d' ' -f2-`
+  # Set homebrew to use the latest mysql that is v5.5.29
+  `brew versions mysql 2>/dev/null | grep ^5\.5\.29 | head -n 1 | cut -d' ' -f2-`
+  cd -
+
+  if [[ "$(type -P brew)" ]]; then
+    # Post-install commands for mysql
+    unset TMPDIR
+    mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+  fi
+
   # Install Homebrew recipes.
-  recipes=(git tree sl lesspipe id3tool nmap htop-osx man2html macvim)
+  recipes=(git tree sl lesspipe id3tool nmap htop-osx man2html macvim tmux ack mysql)
 
   list="$(to_install "${recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then
