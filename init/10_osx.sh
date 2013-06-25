@@ -16,6 +16,11 @@ fi
 
 if [[ "$(type -P brew)" ]]; then
   e_header "Updating Homebrew"
+  cd `brew --prefix`
+  git fetch origin
+  git reset --hard origin/master
+  cd -
+
   brew update
 
   cd `brew --prefix`
