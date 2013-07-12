@@ -18,7 +18,7 @@ if [[ "$(type -P brew)" ]]; then
   e_header "Updating Homebrew"
   cd `brew --prefix`
   git fetch origin
-  git reset --hard origin/master
+  git reset --hard origin/master || sudo git reset --hard origin/master
   cd -
 
   brew update
