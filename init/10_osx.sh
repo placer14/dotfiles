@@ -29,7 +29,7 @@ if [[ "$(type -P brew)" ]]; then
   cd -
 
   # Install Homebrew recipes.
-  recipes=(git tree sl lesspipe id3tool nmap htop-osx man2html macvim tmux ack gpg wemux)
+  recipes=(git tree sl lesspipe id3tool nmap htop-osx man2html macvim tmux ack gpg wemux node)
 
   list="$(to_install "${recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then

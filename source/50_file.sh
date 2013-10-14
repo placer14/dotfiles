@@ -40,3 +40,13 @@ function md() {
   mkdir -p "$@" && cd "$@"
 }
 
+# GIT
+alias gcount='git shortlog -sn'
+alias glgp="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+alias glg='git log --stat --max-count=5'
+alias glgg='git log --graph --max-count=5'
+alias glgo='git log --stat --oneline'
+alias gss='git status -s'
+function gdv() {
+  git diff -w "$@" | view -
+}

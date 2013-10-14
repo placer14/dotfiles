@@ -19,6 +19,13 @@ function dotfiles() {
   ~/.dotfiles/bin/dotfiles "$@" && src
 }
 
-src
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=/usr/local/sbin:$PATH
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+## Added for NPM
+export PATH="`npm -g bin 2>/dev/null | head -n1`:$PATH"
+
+src
