@@ -7,7 +7,7 @@ function dev () {
     echo ""
     return 1
   else
-    if [[ -L ${WORKDIR}${1} ]]; then
+    if [[ -d ${WORKDIR}${1} ]]; then
       cd ${WORKDIR}${1}
       if [[ -f ${WORKDIR}${1}/.bashrc ]]; then
         source ${WORKDIR}${1}/.bashrc

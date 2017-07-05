@@ -11,16 +11,11 @@ fi
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
   e_header "Installing Homebrew"
-  true | /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+  true | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 if [[ "$(type -P brew)" ]]; then
   e_header "Updating Homebrew"
-  cd `brew --prefix`
-  git fetch origin
-  git reset --hard origin/master || sudo git reset --hard origin/master
-  cd -
-
   brew update
 
   cd `brew --prefix`
@@ -29,17 +24,12 @@ if [[ "$(type -P brew)" ]]; then
   cd -
 
   # Install Homebrew recipes.
-  recipes=(git tree sl lesspipe id3tool nmap htop-osx man2html macvim tmux ack gpg wemux node)
+  recipes=(git nmap htop-osx macvim tmux gpg the_silver_searcher lesspipe)
 
   list="$(to_install "${recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then
     e_header "Installing Homebrew recipes: $list"
     brew install $list
-  fi
-
-  if [[ ! "$(type -P gcc-4.2)" ]]; then
-    e_header "Installing Homebrew dupe recipe: apple-gcc42"
-    brew install https://raw.github.com/Homebrew/homebrew-dupes/master/apple-gcc42.rb
   fi
 fi
 
@@ -50,6 +40,6 @@ if [[ "$(type -P vim)" ]]; then
     cd $HOME/.vim; rake
   else
     e_header "Installing vim-janus"
-    curl -Lo- https://raw.github.com/carlhuda/janus/master/bootstrap.sh | bash
+    curl -L https://bit.ly/janus-bootstrap | bash
   fi
 fi

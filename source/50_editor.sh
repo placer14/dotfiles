@@ -1,7 +1,7 @@
 # Editing
 
 if [[ ! "$SSH_TTY" && "$OSTYPE" =~ ^darwin ]]; then
-  export EDITOR='vim'
+  export EDITOR='vim -f'
   export LESSEDIT='vim %f'
   alias q='vim'
 else
