@@ -1,0 +1,15 @@
+color vividchalk
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<cr>
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+set list!
+
+
+" Turn on Mouse Capture
+set mouse=a
+" Add support for iTerm2 and Large windows
+if has('mouse_sgr')
+  set ttymouse=sgr
+endif
