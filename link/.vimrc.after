@@ -14,5 +14,14 @@ if has('mouse_sgr')
   set ttymouse=sgr
 endif
 
+" CtrlP Settings
+let g:ctrlp_match_window_bottom = 1
+"let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_max_files = 100000
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_max_depth = 30
+let g:ctrlp_working_path_mode = 0
+
 " Settings to get clipboard to work with env
 set clipboard=unnamed
