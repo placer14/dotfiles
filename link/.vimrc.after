@@ -13,3 +13,6 @@ set mouse=a
 if has('mouse_sgr')
   set ttymouse=sgr
 endif
+
+" Settings to get clipboard to work with env
+set clipboard=unnamed

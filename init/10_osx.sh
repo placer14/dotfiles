@@ -24,7 +24,7 @@ if [[ "$(type -P brew)" ]]; then
   cd -
 
   # Install Homebrew recipes.
-  recipes=(git nmap htop-osx macvim tmux gnupg the_silver_searcher lesspipe go@1.7 platformio)
+  recipes=(git nmap htop-osx macvim tmux gnupg the_silver_searcher lesspipe go@1.7 platformio reattach-to-user-namespace)
 
   list="$(to_install "${recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then
